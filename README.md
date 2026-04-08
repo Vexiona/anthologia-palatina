@@ -1,53 +1,24 @@
-# Anthologia Palatina - Metrical Viewer
+# Anthologia Palatina - Metrical Dataset
 
-Interactive viewer for the metrical analysis of Book I (Christian Epigrams) of the Anthologia Palatina (Codex Palatinus Graecus 23).
+Metrical and prosodic dataset for Book I (Christian Epigrams) of the Anthologia Palatina (Codex Palatinus Graecus 23).
 
-## Building
+The dataset provides a quantifiable metrical and prosodic analysis of the Greek text as edited in *Anthologia Palatina. Book I. The Christian Poems* [cf. References], with manuscript variants noted wherever they diverge metrically from the edited text. The syllable hyphenation, metrical schemes, and all annotations were produced manually by the authors and verified with automated tooling.
 
-Requires Python 3. No external dependencies.
+## Contents
 
-```
-make            # build the viewer
-make zip        # build and package everything into a zip
-make clean      # remove build artifacts
-```
+- `data/hex.csv` - Hexameter verses (337 verses)
+- `data/iamb.csv` - Iambic trimeter verses (86 verses)
+- `data/pentameter.csv` - Elegiac pentameter verses (77 verses)
+- `data/anthologia_palatina.xlsx` - Source spreadsheet
 
-The output is a single self-contained HTML file at `build/viewer.html`.
+## Parameters tracked
 
-## Project structure
+Metrical pattern, metrical and syntactic caesurae, diaereses, bridges, homodynia, and the position of word accents at caesurae.
 
-```
-data/               Spreadsheet data (CSV exports and source xlsx)
-src/
-  build.py          Entry point: assembles the viewer from all sources
-  common.py         Shared parsing utilities (syllables, columns, schemes)
-  hexameter.py      Hexameter-specific processing and verification
-  iamb.py           Iambic trimeter processing
-  pentameter.py     Elegiac pentameter processing
-  annotate.py       HTML generation from parsed verse data
-  header.html       Page header, toggle buttons, and legend
-  footer.html       Page footer with license notice
-  style.css         All styling
-  viewer.js         Interactive viewer logic (toggles, selection, navigation)
-```
+## Viewer
 
-## Using the viewer
-
-Click a verse to select it. Use arrow keys to navigate between verses.
-
-The toolbar toggles control overlays on the selected verse:
-
-- **Colors** - syllable quantity highlighting (green = long, purple = short)
-- **Scansion** - macron/breve marks below syllables
-- **Feet** - dashed blue lines at foot boundaries
-- **Diaereses** - solid blue lines where word-ends coincide with foot boundaries
-- **Caesurae** - functional caesurae (red). The **M** button adds metrical caesurae (grey)
-- **Bridges** - orange arcs marking bridge violations (Meyer, Hilberg, Hermann, Naeke, Porson)
-- **Homodynia** - red dots where natural word accent falls on the metrical ictus
-
-Each toggle has a **\*** button to apply the overlay to all verses at once.
+An interactive viewer for this dataset is available at https://github.com/Vexiona/metrical-viewer.
 
 ## License
 
-- **Text and data** (`data/`): Copyright 2026 Simona Nicolae, Cristian Simon. Licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
-- **Code** (`src/`, `Makefile`): Copyright 2026 Ioan Andrei Nicolae. Licensed under [GPLv3](https://www.gnu.org/licenses/gpl-3.0.html).
+Copyright 2026 Simona Nicolae, Cristian Șimon. Licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
